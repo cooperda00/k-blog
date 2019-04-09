@@ -1,24 +1,11 @@
 @import "../../../variables";
 
 .BodyContainer {
-  @include flex(row);
-  min-height: 100%;
-  min-width: 100%;
-}
-
-.BlogCardsContainer {
-  display: grid;
-  grid-auto-rows: 350px;
-  grid-gap: 1rem;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  padding: $spacingM;
+  @include flex(column, space-between);
+  min-height: 87vh;
   width: 100%;
-}
 
-// @media screen and (min-width: 1000px) {
-//   .BlogCardsContainer {
-//     width: 100%;
-//     // grid-template-columns: 1fr 1fr;
-//   }
-// }
+  @include min-width(1000px) {
+    @include flex(row, space-between);
+  }
+}

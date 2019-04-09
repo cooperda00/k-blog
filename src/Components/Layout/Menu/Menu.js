@@ -1,6 +1,5 @@
 //Modules
 import React from "react";
-import Media from "react-media";
 //SASS
 import styles from "./Menu.module.scss";
 //Redux
@@ -9,7 +8,7 @@ import { getPosts, getPostsByType } from "../../../store/actions/blogActions";
 
 //Use Media to conditionally render based on viewport size
 const Menu = props => {
-  const types = ["All", "Type 1", "Type 2", "Type 3", "Type 4"];
+  const types = ["All", "Vocab", "Grammar", "Resources"];
 
   const getPostByType = e => {
     const type = e.target.innerHTML;
@@ -21,21 +20,13 @@ const Menu = props => {
     }
   };
   return (
-    <>
-      <Media query="(min-width: 1000px)">
-        {matches =>
-          matches && (
-            <div className={styles.MenuContainer}>
-              {types.map(type => (
-                <button onClick={getPostByType} key={type}>
-                  {type}
-                </button>
-              ))}
-            </div>
-          )
-        }
-      </Media>
-    </>
+    <div className={styles.MenuContainer}>
+      {types.map(type => (
+        <button onClick={getPostByType} key={type}>
+          {type}
+        </button>
+      ))}
+    </div>
   );
 };
 

@@ -1,10 +1,22 @@
+@import "../../../../variables";
+
 .SearchBarContainer {
-  display: flex;
+  @include flex(column, center, center);
+  height: 100%;
+  z-index: 2;
 
   p {
     margin-right: 0.5rem;
+    color: white;
   }
   input {
     width: 100px;
+    height: $pText;
+  }
+
+  @include min-width(550px) {
+    input {
+      width: 200px;
+    }
   }
 }

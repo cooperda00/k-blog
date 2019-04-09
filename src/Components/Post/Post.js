@@ -1,6 +1,7 @@
 //Modules
 import React, { useEffect } from "react";
 import moment from "moment";
+import Markdown from "markdown-to-jsx";
 //Redux
 import { connect } from "react-redux";
 import { getPost, clearPost } from "../../store/actions/blogActions";
@@ -27,18 +28,31 @@ const Post = props => {
     imageCaption,
     imageURL,
     postId,
-    title
+    title,
+    sticky,
+    authorTitle,
+    type
   } = props.post;
 
   return (
     <div className={styles.PostContainer}>
       <h2>{title}</h2>
-      <img src={imageURL} alt={imageCaption} />
+      {imageURL && <img src={imageURL} alt={imageCaption} />}
       <div className={styles.PostMeta}>
-        <p>Author: {author}</p>
-        <p>Last Edited: {moment.unix(date).format("MMMM D YYYY")}</p>
+        <div>
+          <p>Author: </p>
+          <p>
+            {author}, {authorTitle}
+          </p>
+        </div>
+        <div>
+          <p>Last Edited: </p>
+          <p>{moment.unix(date).format("MMMM D YYYY")}</p>
+        </div>
       </div>
-      <p className={styles.BodyText}>{body}</p>
+      <div className={styles.MarkdownContainer}>
+        {body && <Markdown options={{ forceBlock: true }}>{body}</Markdown>}
+      </div>
     </div>
   );
 };

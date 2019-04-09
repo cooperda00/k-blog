@@ -1,0 +1,11 @@
+@import "../../variables";
+
+.BlogCardsContainer {
+  display: grid;
+  grid-auto-rows: 350px;
+  grid-gap: $spacingL;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: $spacingL;
+  width: 100%;
+}

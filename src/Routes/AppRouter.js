@@ -6,6 +6,8 @@ import Header from "../Components/Layout/Header/Header";
 import Menu from "../Components/Layout/Menu/Menu";
 import Body from "../Components/Layout/Body/Body";
 import Post from "../Components/Post/Post";
+import Sidebar from "../Components/Layout/Sidebar/Sidebar";
+import BlogCardsContainer from "../Components/BlogCardsContainer/BlogCardsContainer";
 //CSS
 import styles from "./AppRouter.module.scss";
 
@@ -15,11 +17,16 @@ export default function AppRouter() {
       <div className={styles.AppContainer}>
         <Header />
         <Menu />
-        <Switch>
-          <Route path="/" component={Body} exact={true} />
-          <Route path="/blog" component={Body} exact={true} />
-          <Route path="/blog/:id" component={Post} exact={true} />
-        </Switch>
+        <Body>
+          <Switch>
+            <Route path="/" component={BlogCardsContainer} exact={true} />
+            <Route path="/blog" component={BlogCardsContainer} exact={true} />
+            <Route path="/blog/:id" component={Post} exact={true} />
+            {/* <Route path="/blog/about" component={About} exact={true} />
+            <Route path="/blog/contact" component={Contact} exact={true} /> */}
+          </Switch>
+          <Sidebar />
+        </Body>
       </div>
     </BrowserRouter>
   );

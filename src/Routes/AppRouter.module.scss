@@ -1,2 +1,5 @@
+@import "../variables";
+
 .AppContainer {
+  @include flex(column, space-between);
 }

@@ -1,18 +1,25 @@
+//FONT STACK
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Nanum+Brush+Script");
+$englishFont: "Montserrat", sans-serif;
+$koreanFont: "Nanum Brush Script", cursive;
 //VARIABLES
-$primary: lightgrey;
-$secondary: darkgray;
-$tertiary: lightgreen;
+$primary: #cccccc;
+$darkGray: rgb(51, 51, 51);
+$secondary: rgb(0, 69, 161); //Blue
+$tertiary: rgb(206, 42, 55);
 
 //FONT SIZES
+$pTextXS: 1.2rem;
 $pTextS: 1.5rem;
 $pText: 2rem;
 $subtitleText: 3rem;
 $titleText: 3.5rem;
 
-//LINE HEIGHT SPACING ( 150% of font size)
-$pSpacing: 3rem;
-$subtitleSpacing: 4.5rem;
-$titleSpacing: 5.25rem;
+//LINE HEIGHT SPACING ( 135% of font size)
+$pSpacing: 2.7rem;
+$subtitleSpacing: 4.05rem;
+$titleSpacing: 4.725rem;
 
 //General Spacing
 $spacingXS: 0.5rem;

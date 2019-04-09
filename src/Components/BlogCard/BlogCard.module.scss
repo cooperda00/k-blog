@@ -4,8 +4,9 @@
   border: 1px solid $primary;
   height: 350px;
   max-width: 1000px;
+  min-width: 100%;
 
-  @include flex(row, null);
+  @include flex(row);
 }
 
 .Left {
@@ -13,24 +14,56 @@
   width: 50%;
   height: 350px;
   padding: $spacingS;
+  border-right: 1px solid $primary;
   .Meta {
     @include flex(row, space-between);
     color: grey;
+
+    p {
+      font-size: $pTextXS;
+      color: $tertiary;
+    }
   }
   p {
     font-size: $pTextS;
+  }
+  h2 {
+    font-size: $pText;
   }
 
   @include min-width(600px) {
     p {
       font-size: $pText;
     }
+
+    .Meta {
+      p {
+        font-size: $pTextS;
+      }
+    }
+  }
+
+  @include min-width(800px) {
+    h2 {
+      margin-bottom: $spacingM;
+    }
+  }
+
+  @include min-width(1000px) {
+    h2 {
+      font-size: $subtitleText;
+    }
   }
 }
 
 .Right {
   width: 50%;
+  @include flex(row, center, center);
 
+  .Fallback h1 {
+    font-family: $koreanFont;
+    font-size: 10rem;
+  }
   img {
     object-fit: cover;
     height: 100%;

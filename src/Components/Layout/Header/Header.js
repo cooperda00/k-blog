@@ -5,13 +5,21 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 //Components
 import SearchBar from "./SearchBar/SearchBar";
+//Assets
+import tg from "../../../assets/taeguk.png";
+// import hangeulBg from "../../../assets/earlyhangeultrans.png";
 
 export default function Header() {
   return (
     <div className={styles.HeaderContainer}>
-      <Link to="/">
-        <h1>My Blog</h1>
-      </Link>
+      <div className={styles.Filter} />
+      <div className={styles.Logo}>
+        <img src={tg} alt={tg} />
+        <Link to="/">
+          <h1>K-Lang Blog</h1>
+        </Link>
+      </div>
+
       <SearchBar />
     </div>
   );

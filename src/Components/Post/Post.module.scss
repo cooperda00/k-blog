@@ -1,9 +1,11 @@
 @import "../../variables.scss";
 
 .PostContainer {
+  height: 100%;
+  width: 100%;
   @include flex(column, center, center);
 
-  padding: $spacingM;
+  padding: $spacingL;
 
   h2 {
     margin-bottom: $spacingL;
@@ -17,14 +19,23 @@
 
   .PostMeta {
     @include flex(row, space-between);
-
-    color: grey;
     margin-bottom: $spacingS;
-    width: 450px;
-  }
-
-  .BodyText {
+    width: 100%;
     max-width: 450px;
-    text-align: center;
+
+    div {
+      p {
+        color: $tertiary;
+      }
+    }
+  }
+}
+
+.MarkdownContainer {
+  margin-top: $spacingL;
+  max-width: 1000px;
+
+  p {
+    margin-bottom: $spacingL;
   }
 }

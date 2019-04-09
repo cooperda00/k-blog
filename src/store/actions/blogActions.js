@@ -7,7 +7,7 @@ const getPosts = () => {
     client
       //Get all entries of a specific content-type
       .getEntries({
-        content_type: "testBlogPost"
+        content_type: "kLangPost"
       })
       //Extract neccessary data from fetch response and format
       .then(entries => {
@@ -15,16 +15,27 @@ const getPosts = () => {
         const posts = [];
         entries.items.forEach(item => {
           //Format Contentful time to unix timestamp
-          const date = moment(item.sys.updatedAt).format("X");
+          const date = moment(item.sys.createdAt).format("X");
+          //Check if image exists
+          const imageURL = item.fields.mainImage
+            ? item.fields.mainImage.fields.file.url
+            : null;
+          const imageCaption = item.fields.mainImage
+            ? item.fields.mainImage.fields.description
+            : null;
+          //Create post
           const post = {
             postId: item.sys.id,
+            subtitle: item.fields.subtitle,
+            date,
+            sticky: item.fields.sticky,
             author: item.fields.author,
+            authorTitle: item.fields.authorTitle,
             body: item.fields.body,
-            date: date,
             title: item.fields.title,
-            imageURL: item.fields.image.fields.file.url,
-            imageCaption: item.fields.image.fields.description,
-            type: item.fields.type
+            imageURL,
+            imageCaption,
+            type: item.fields.postType
           };
           posts.push(post);
         });
@@ -49,13 +60,13 @@ const getPosts = () => {
 };
 
 const getPostsByType = type => {
-  console.log("Fetching");
+  console.log("Fetching", type);
   return dispatch => {
     client
       //Get all entries of a specific content-type
       .getEntries({
-        content_type: "testBlogPost",
-        "fields.type": type
+        content_type: "kLangPost",
+        "fields.postType": type.toLowerCase()
       })
       //Extract neccessary data from fetch response and format
       .then(entries => {
@@ -63,16 +74,27 @@ const getPostsByType = type => {
         const posts = [];
         entries.items.forEach(item => {
           //Format Contentful time to unix timestamp
-          const date = moment(item.sys.updatedAt).format("X");
+          const date = moment(item.sys.createdAt).format("X");
+          //Check if image exists
+          const imageURL = item.fields.mainImage
+            ? item.fields.mainImage.fields.file.url
+            : null;
+          const imageCaption = item.fields.mainImage
+            ? item.fields.mainImage.fields.description
+            : null;
+          //Create Post
           const post = {
             postId: item.sys.id,
+            subtitle: item.fields.subtitle,
+            date,
+            sticky: item.fields.sticky,
             author: item.fields.author,
+            authorTitle: item.fields.authorTitle,
             body: item.fields.body,
-            date: date,
             title: item.fields.title,
-            imageURL: item.fields.image.fields.file.url,
-            imageCaption: item.fields.image.fields.description,
-            type: item.fields.type
+            imageURL,
+            imageCaption,
+            type: item.fields.postType
           };
           posts.push(post);
         });
@@ -103,15 +125,23 @@ const getPost = postId => {
       .getEntry(postId)
       //Extract neccessary data from fetch response and format
       .then(entry => {
-        const date = moment(entry.sys.updatedAt).format("X");
+        const date = moment(entry.sys.createdAt).format("X");
         const post = {
           postId,
+          subtitle: entry.fields.subtitle,
           author: entry.fields.author,
+          authorTitle: entry.fields.authorTitle,
           body: entry.fields.body,
           date: date,
           title: entry.fields.title,
-          imageURL: entry.fields.image.fields.file.url,
-          imageCaption: entry.fields.image.fields.description
+          sticky: entry.fields.title,
+          type: entry.fields.postType,
+          imageURL: entry.fields.mainImage
+            ? entry.fields.mainImage.fields.file.url
+            : null,
+          imageCaption: entry.fields.mainImage
+            ? entry.fields.mainImage.fields.description
+            : null
         };
         return post;
       })
