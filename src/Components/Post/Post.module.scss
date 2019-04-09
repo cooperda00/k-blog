@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.PostContainer {
+  @include flex(column, center, center);
+
+  padding: $spacingM;
+
+  h2 {
+    margin-bottom: $spacingL;
+  }
+
+  img {
+    margin-bottom: $spacingXS;
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .PostMeta {
+    @include flex(row, space-between);
+
+    color: grey;
+    margin-bottom: $spacingS;
+    width: 450px;
+  }
+
+  .BodyText {
+    max-width: 450px;
+    text-align: center;
+  }
+}

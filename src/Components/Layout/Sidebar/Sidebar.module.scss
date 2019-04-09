@@ -1,0 +1,12 @@
+@import "../../../variables.scss";
+
+.SidebarContainer {
+  @include flex(column, flex-start, center);
+  padding: $spacingS;
+  background: $primary;
+  width: 20%;
+  min-height: 100vh;
+  ul {
+    list-style: none;
+  }
+}

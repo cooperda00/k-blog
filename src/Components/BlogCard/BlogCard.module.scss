@@ -1,0 +1,39 @@
+@import "../../variables.scss";
+
+.BlogCardContainer {
+  border: 1px solid $primary;
+  height: 350px;
+  max-width: 1000px;
+
+  @include flex(row, null);
+}
+
+.Left {
+  @include flex(column, space-between);
+  width: 50%;
+  height: 350px;
+  padding: $spacingS;
+  .Meta {
+    @include flex(row, space-between);
+    color: grey;
+  }
+  p {
+    font-size: $pTextS;
+  }
+
+  @include min-width(600px) {
+    p {
+      font-size: $pText;
+    }
+  }
+}
+
+.Right {
+  width: 50%;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,64 @@
+//VARIABLES
+$primary: lightgrey;
+$secondary: darkgray;
+$tertiary: lightgreen;
+
+//FONT SIZES
+$pTextS: 1.5rem;
+$pText: 2rem;
+$subtitleText: 3rem;
+$titleText: 3.5rem;
+
+//LINE HEIGHT SPACING ( 150% of font size)
+$pSpacing: 3rem;
+$subtitleSpacing: 4.5rem;
+$titleSpacing: 5.25rem;
+
+//General Spacing
+$spacingXS: 0.5rem;
+$spacingS: 1rem;
+$spacingM: 1.5rem;
+$spacingL: 2rem;
+
+//MIXINS
+//Flex
+@mixin flex($dir: null, $just: null, $ali: null) {
+  display: flex;
+  @if $dir != null {
+    flex-direction: $dir;
+  }
+  @if $just != null {
+    justify-content: $just;
+  }
+  @if $ali != null {
+    align-items: $ali;
+  }
+}
+//Media min-width
+@mixin min-width($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

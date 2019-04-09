@@ -1,0 +1,13 @@
+@import "../../../variables.scss";
+
+.MenuContainer {
+  background: $secondary;
+  height: 40px;
+  @include flex(row, space-around, center);
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
