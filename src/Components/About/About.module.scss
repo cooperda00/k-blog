@@ -1,0 +1,22 @@
+@import "../../variables";
+
+.About {
+  @include flex(column, flex-start, center);
+  height: 100%;
+  padding: $spacingM;
+  width: 100%;
+
+  .Text {
+    max-width: 700px;
+    width: 90%;
+  }
+
+  img {
+    filter: grayscale(100%);
+    max-width: 100%;
+  }
+  img,
+  p {
+    margin-bottom: $spacingXL;
+  }
+}

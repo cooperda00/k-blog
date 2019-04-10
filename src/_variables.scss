@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nanum+Brush+Script");
 $englishFont: "Montserrat", sans-serif;
 $koreanFont: "Nanum Brush Script", cursive;
+
 //VARIABLES
 $primary: #cccccc;
 $darkGray: rgb(51, 51, 51);
@@ -26,6 +27,7 @@ $spacingXS: 0.5rem;
 $spacingS: 1rem;
 $spacingM: 1.5rem;
 $spacingL: 2rem;
+$spacingXL: 3rem;
 
 //MIXINS
 //Flex
@@ -41,31 +43,10 @@ $spacingL: 2rem;
     align-items: $ali;
   }
 }
+
 //Media min-width
 @mixin min-width($width) {
   @media screen and (min-width: $width) {
     @content;
   }
-}
-
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-@mixin flex-column-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@mixin flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-@mixin flex-row-center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }

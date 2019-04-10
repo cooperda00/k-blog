@@ -2,7 +2,8 @@
 
 .BodyContainer {
   @include flex(column, space-between);
-  min-height: 87vh;
+
+  min-height: 90vh;
   width: 100%;
 
   @include min-width(1000px) {

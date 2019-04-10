@@ -1,6 +1,6 @@
 //Modules
 import React from "react";
-//Sass
+//SASS
 import styles from "./Body.module.scss";
 
 const Body = props => {

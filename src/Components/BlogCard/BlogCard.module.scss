@@ -1,32 +1,33 @@
 @import "../../variables.scss";
 
 .BlogCardContainer {
+  @include flex(row);
   border: 1px solid $primary;
   height: 350px;
   max-width: 1000px;
   min-width: 100%;
-
-  @include flex(row);
 }
 
 .Left {
   @include flex(column, space-between);
-  width: 50%;
+  border-right: 1px solid $primary;
   height: 350px;
   padding: $spacingS;
-  border-right: 1px solid $primary;
+  width: 50%;
+
   .Meta {
     @include flex(row, space-between);
-    color: grey;
 
     p {
-      font-size: $pTextXS;
       color: $tertiary;
+      font-size: $pTextXS;
     }
   }
+
   p {
     font-size: $pTextS;
   }
+
   h2 {
     font-size: $pText;
   }
@@ -57,16 +58,19 @@
 }
 
 .Right {
-  width: 50%;
   @include flex(row, center, center);
+  width: 50%;
 
-  .Fallback h1 {
-    font-family: $koreanFont;
-    font-size: 10rem;
+  .Fallback {
+    h1 {
+      font-family: $koreanFont;
+      font-size: 10rem;
+    }
   }
+
   img {
-    object-fit: cover;
     height: 100%;
+    object-fit: cover;
     width: 100%;
   }
 }

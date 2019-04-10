@@ -1,15 +1,15 @@
 // Modules
 import React from "react";
 import { Link } from "react-router-dom";
-//Sass
+//SASS
 import styles from "./Header.module.scss";
 //Components
 import SearchBar from "./SearchBar/SearchBar";
 //Assets
 import tg from "../../../assets/taeguk.png";
-// import hangeulBg from "../../../assets/earlyhangeultrans.png";
 
-export default function Header() {
+export default function Header(props) {
+  console.log(props.location);
   return (
     <div className={styles.HeaderContainer}>
       <div className={styles.Filter} />

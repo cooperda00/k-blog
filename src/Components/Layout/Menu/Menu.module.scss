@@ -1,14 +1,15 @@
 @import "../../../variables.scss";
 
 .MenuContainer {
+  @include flex(row, space-around, center);
+
   background: $tertiary;
   height: 30px;
-  @include flex(row, space-around, center);
 
   button {
     background: none;
     border: none;
-    cursor: pointer;
     color: white;
+    cursor: pointer;
   }
 }

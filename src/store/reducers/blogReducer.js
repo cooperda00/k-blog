@@ -1,7 +1,8 @@
 const initState = {
   posts: [],
   filter: "",
-  post: {}
+  post: {},
+  stickyPosts: []
 };
 
 export const blogReducer = (state = initState, action) => {
@@ -14,6 +15,7 @@ export const blogReducer = (state = initState, action) => {
     case "GET_POSTS_ERROR":
       console.log(`There was an error fetcing posts: ${action.err}`);
       return state;
+
     case "GET_POSTS_BY_TYPE":
       return {
         ...state,
@@ -22,6 +24,7 @@ export const blogReducer = (state = initState, action) => {
     case "GET_POSTS_BY_TYPE_ERROR":
       console.log(`There was an error fetcing posts: ${action.err}`);
       return state;
+
     case "GET_POST":
       return {
         ...state,
@@ -30,6 +33,16 @@ export const blogReducer = (state = initState, action) => {
     case "GET_POST_ERROR":
       console.log(`There was an error fetcing the post: ${action.err}`);
       return state;
+
+    case "GET_STICKY_POSTS":
+      return {
+        ...state,
+        stickyPosts: action.posts
+      };
+    case "GET_STICKY_POSTS_ERROR":
+      console.log(`There was an error fetcing posts: ${action.err}`);
+      return state;
+
     case "CLEAR_POST":
       return {
         ...state,

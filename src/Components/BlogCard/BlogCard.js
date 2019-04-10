@@ -2,55 +2,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import Markdown from "markdown-to-jsx";
 //SASS
 import styles from "./BlogCard.module.scss";
 
-function BlogCard(props) {
-  const {
-    author,
-    body,
-    date,
-    imageCaption,
-    imageURL,
-    title,
-    postId,
-    type,
-    sticky,
-    authorTitle,
-    subtitle
-  } = props;
+function BlogCard({
+  author,
+  date,
+  imageCaption,
+  imageURL,
+  title,
+  postId,
+  type,
+  subtitle
+}) {
+  //Generate 'Image' for posts without main image
   const getFallback = () => {
+    let output = null;
     switch (type) {
       case "vocab":
-        return (
-          <div className={styles.Fallback}>
+        output = (
+          <>
             <h1>단</h1>
             <h1>어</h1>
-          </div>
+          </>
         );
+        break;
       case "grammar":
-        return (
-          <div className={styles.Fallback}>
+        output = (
+          <>
             <h1>문</h1>
             <h1>법</h1>
-          </div>
+          </>
         );
+        break;
       case "resources":
-        return (
-          <div className={styles.Fallback}>
+        output = (
+          <>
             <h1>자</h1>
             <h1>료</h1>
-          </div>
+          </>
         );
+        break;
       default:
-        return (
-          <div className={styles.Fallback}>
+        output = (
+          <>
             <h1>안</h1>
             <h1>녕</h1>
-          </div>
+          </>
         );
+        break;
     }
+    return <div className={styles.Fallback}>{output}</div>;
   };
 
   return (
@@ -66,8 +68,14 @@ function BlogCard(props) {
         </div>
         <div>
           <h2>{title}</h2>
-          {subtitle && <p>{subtitle}</p>}
-          {/* <p>{body.substr(0, 150) + "..."}</p> */}
+          {/* Display a truncated subtitle if length greater than 150chars */}
+          {subtitle && (
+            <p>
+              {subtitle.length > 150
+                ? subtitle.substr(0, 150) + "..."
+                : subtitle}
+            </p>
+          )}
         </div>
 
         <Link to={`/blog/${postId}`}>Read More</Link>

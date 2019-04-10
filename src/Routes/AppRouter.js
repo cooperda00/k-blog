@@ -2,13 +2,15 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 //Components
-import Header from "../Components/Layout/Header/Header";
-import Menu from "../Components/Layout/Menu/Menu";
+import About from "../Components/About/About";
 import Body from "../Components/Layout/Body/Body";
+import BlogCardsContainer from "../Components/BlogCardsContainer/BlogCardsContainer";
+import Contact from "../Components/Contact/Contact";
+import Header from "../Components/Layout/Header/Header";
+// import Menu from "../Components/Layout/Menu/Menu";
 import Post from "../Components/Post/Post";
 import Sidebar from "../Components/Layout/Sidebar/Sidebar";
-import BlogCardsContainer from "../Components/BlogCardsContainer/BlogCardsContainer";
-//CSS
+//SASS
 import styles from "./AppRouter.module.scss";
 
 export default function AppRouter() {
@@ -16,14 +18,14 @@ export default function AppRouter() {
     <BrowserRouter>
       <div className={styles.AppContainer}>
         <Header />
-        <Menu />
+        {/* <Menu /> */}
         <Body>
           <Switch>
             <Route path="/" component={BlogCardsContainer} exact={true} />
+            <Route path="/about" component={About} />
             <Route path="/blog" component={BlogCardsContainer} exact={true} />
-            <Route path="/blog/:id" component={Post} exact={true} />
-            {/* <Route path="/blog/about" component={About} exact={true} />
-            <Route path="/blog/contact" component={Contact} exact={true} /> */}
+            <Route path="/blog/:id" component={Post} />
+            <Route path="/contact" component={Contact} exact={true} />
           </Switch>
           <Sidebar />
         </Body>

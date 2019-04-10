@@ -1,39 +1,63 @@
 @import "../../variables.scss";
 
 .PostContainer {
-  height: 100%;
-  width: 100%;
   @include flex(column, center, center);
-
+  height: 100%;
   padding: $spacingL;
+  width: 100%;
 
-  h2 {
-    margin-bottom: $spacingL;
+  .Top {
+    @include flex(row, space-between, center);
+    max-width: 1000px;
+    width: 100%;
   }
 
   img {
-    margin-bottom: $spacingXS;
-    max-width: 450px;
+    margin: $spacingXL 0;
+    max-width: 850px;
     width: 100%;
   }
+}
 
-  .PostMeta {
-    @include flex(row, space-between);
-    margin-bottom: $spacingS;
-    width: 100%;
-    max-width: 450px;
+.TitleContainer {
+  width: 70%;
+  h2 {
+    margin-bottom: $spacingXS;
+  }
 
-    div {
-      p {
-        color: $tertiary;
-      }
+  h3 {
+    color: $tertiary;
+  }
+
+  h2,
+  h3 {
+    font-size: $pText;
+  }
+  @include min-width(600px) {
+    h2 {
+      font-size: $titleText;
+    }
+
+    h3 {
+      font-size: $subtitleText;
     }
   }
 }
 
+.PostMeta {
+  @include flex(column, space-between);
+  margin-bottom: $spacingS;
+
+  p {
+    color: $tertiary;
+    font-size: $pTextS;
+  }
+}
+
 .MarkdownContainer {
-  margin-top: $spacingL;
-  max-width: 1000px;
+  margin-top: $spacingXL;
+  width: 70%;
+  max-width: 850px;
 
   p {
     margin-bottom: $spacingL;

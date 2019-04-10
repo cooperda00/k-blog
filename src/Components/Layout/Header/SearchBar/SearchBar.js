@@ -6,20 +6,21 @@ import styles from "./SearchBar.module.scss";
 import { connect } from "react-redux";
 import { filterPosts } from "../../../../store/actions/blogActions";
 
-function SearchBar(props) {
+function SearchBar({ filterPosts }) {
   return (
     <div className={styles.SearchBarContainer}>
-      <p>Search:</p>
+      <label>Search:</label>
       <input
         type="text"
         onChange={e => {
-          props.filterPosts(e.target.value);
+          filterPosts(e.target.value);
         }}
       />
     </div>
   );
 }
 
+//Redux
 const mapDispatchToProps = dispatch => {
   return {
     filterPosts: filter => {
@@ -27,7 +28,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
 export default connect(
   null,
   mapDispatchToProps

@@ -11,7 +11,6 @@ const getPosts = () => {
       })
       //Extract neccessary data from fetch response and format
       .then(entries => {
-        console.log(entries);
         const posts = [];
         entries.items.forEach(item => {
           //Format Contentful time to unix timestamp
@@ -60,7 +59,6 @@ const getPosts = () => {
 };
 
 const getPostsByType = type => {
-  console.log("Fetching", type);
   return dispatch => {
     client
       //Get all entries of a specific content-type
@@ -70,7 +68,6 @@ const getPostsByType = type => {
       })
       //Extract neccessary data from fetch response and format
       .then(entries => {
-        console.log(entries);
         const posts = [];
         entries.items.forEach(item => {
           //Format Contentful time to unix timestamp
@@ -161,6 +158,45 @@ const getPost = postId => {
   };
 };
 
+const getSticky = () => {
+  return dispatch => {
+    client
+      //Get all entries that are marked as sticky
+      .getEntries({
+        content_type: "kLangPost",
+        "fields.sticky": true
+      })
+      //Extract neccessary data from fetch response and format
+      .then(entries => {
+        const stickyPosts = [];
+        entries.items.forEach(item => {
+          //Create Post
+          const post = {
+            postId: item.sys.id,
+            title: item.fields.title
+          };
+          stickyPosts.push(post);
+        });
+        //Order Array By Timestamp
+        stickyPosts.sort((a, b) => b.date - a.date);
+        return stickyPosts;
+      })
+      //Dispatch array of posts to the store
+      .then(posts => {
+        dispatch({
+          type: "GET_STICKY_POSTS",
+          posts: posts
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: "GET_STICKY_POSTS_ERROR",
+          err
+        });
+      });
+  };
+};
+
 const clearPost = () => {
   return {
     type: "CLEAR_POST"
@@ -174,4 +210,4 @@ const filterPosts = filter => {
   };
 };
 
-export { getPosts, getPost, clearPost, filterPosts, getPostsByType };
+export { getPosts, getPost, clearPost, filterPosts, getPostsByType, getSticky };

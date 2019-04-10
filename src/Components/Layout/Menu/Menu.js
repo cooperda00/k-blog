@@ -7,18 +7,18 @@ import { connect } from "react-redux";
 import { getPosts, getPostsByType } from "../../../store/actions/blogActions";
 
 //Use Media to conditionally render based on viewport size
-const Menu = props => {
+const Menu = ({ getPosts, getPostsByType }) => {
   const types = ["All", "Vocab", "Grammar", "Resources"];
 
   const getPostByType = e => {
     const type = e.target.innerHTML;
-
     if (type === "All") {
-      props.getPosts();
+      getPosts();
     } else {
-      props.getPostsByType(type);
+      getPostsByType(type);
     }
   };
+
   return (
     <div className={styles.MenuContainer}>
       {types.map(type => (
@@ -30,6 +30,7 @@ const Menu = props => {
   );
 };
 
+//Redux
 const mapDispatchToProps = dispatch => {
   return {
     getPosts: () => {
@@ -40,7 +41,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
 export default connect(
   null,
   mapDispatchToProps
