@@ -19,23 +19,35 @@
     width: 100%;
     z-index: 1;
   }
+}
 
-  .Logo {
-    @include flex(row, flex-start, center);
+.Logo {
+  @include flex(row, flex-start, center);
 
+  height: 100%;
+  padding: $spacingM;
+  width: 100%;
+  z-index: 2;
+
+  img {
     height: 100%;
-    padding: $spacingM;
-    width: 100%;
-    z-index: 2;
+  }
 
-    img {
-      height: 100%;
-    }
+  h1 {
+    color: white;
+    font-size: 1.9rem;
+    margin-left: $spacingM;
+  }
 
+  //Mobile Edge Cases
+  @include min-width(321px) {
     h1 {
-      color: white;
+      font-size: 2.5rem;
+    }
+  }
+  @include min-width(376px) {
+    h1 {
       font-size: $subtitleText;
-      margin-left: $spacingM;
     }
   }
 }

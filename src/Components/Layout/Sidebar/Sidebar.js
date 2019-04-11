@@ -1,5 +1,5 @@
 //Modules
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 //SASS
@@ -16,14 +16,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Sidebar = props => {
-  //On mount getPosts
   useEffect(() => {
-    props.getSticky();
     props.getPosts();
+    props.getSticky();
   }, []);
-
   return (
     <div className={styles.SidebarContainer}>
+      <div className={styles.MenuExtension} />
       <div className={styles.Filter} />
       <div className={styles.SidebarContents}>
         <ul className={styles.ImportantPosts}>
@@ -47,35 +46,34 @@ const Sidebar = props => {
             })}
         </ul>
 
-        <ul>
-          <li>
+        <div className={styles.Personal}>
+          <div className={styles.PersonalPages}>
             <Link to="/about">About</Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-
-        <ul className={styles.Social}>
-          <li>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-          </li>
-        </ul>
+          </div>
+          <div className={styles.Social}>
+            <p>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+            </p>
+            <p>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

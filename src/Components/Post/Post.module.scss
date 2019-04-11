@@ -3,13 +3,19 @@
 .PostContainer {
   @include flex(column, center, center);
   height: 100%;
-  padding: $spacingL;
   width: 100%;
+
+  .MenuBar {
+    width: 100%;
+    height: 30px;
+    background: $tertiary;
+  }
 
   .Top {
     @include flex(row, space-between, center);
+    margin-top: $spacingL;
     max-width: 1000px;
-    width: 100%;
+    width: 90%;
   }
 
   img {
@@ -20,7 +26,7 @@
 }
 
 .TitleContainer {
-  width: 70%;
+  width: 85%;
   h2 {
     margin-bottom: $spacingXS;
   }

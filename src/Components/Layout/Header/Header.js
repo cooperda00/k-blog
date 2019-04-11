@@ -1,6 +1,6 @@
 // Modules
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 //SASS
 import styles from "./Header.module.scss";
 //Components
@@ -8,13 +8,18 @@ import SearchBar from "./SearchBar/SearchBar";
 //Assets
 import tg from "../../../assets/taeguk.png";
 
-export default function Header(props) {
-  console.log(props.location);
+function Header(props) {
   return (
     <div className={styles.HeaderContainer}>
       <div className={styles.Filter} />
       <div className={styles.Logo}>
-        <img src={tg} alt={tg} />
+        <img
+          src={tg}
+          alt={tg}
+          onClick={() => {
+            props.history.push("/");
+          }}
+        />
         <Link to="/">
           <h1>K-Lang Blog</h1>
         </Link>
@@ -24,3 +29,5 @@ export default function Header(props) {
     </div>
   );
 }
+
+export default withRouter(Header);

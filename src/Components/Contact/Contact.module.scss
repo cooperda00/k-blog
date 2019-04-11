@@ -1,3 +1,33 @@
 @import "../../variables";
 .Contact {
+  @include flex(column, flex-start, center);
+  height: 100%;
+  padding: $spacingM;
+  width: 100%;
+
+  form {
+    @include flex(column, flex-start, flex-start);
+
+    label input,
+    label textarea {
+      display: block;
+      width: 350px;
+      text-align: center;
+      resize: none;
+    }
+
+    textarea {
+      min-height: 350px;
+    }
+
+    button,
+    label {
+      margin-top: $spacingM;
+    }
+  }
+
+  p {
+    margin-top: $spacingM;
+    width: 350px;
+  }
 }

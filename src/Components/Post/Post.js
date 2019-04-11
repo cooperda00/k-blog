@@ -35,6 +35,7 @@ const Post = props => {
 
   return (
     <div className={styles.PostContainer}>
+      <div className={styles.MenuBar} />
       <div className={styles.Top}>
         <div className={styles.TitleContainer}>
           <h2>{title}</h2>

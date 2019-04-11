@@ -13,6 +13,13 @@
     color: white;
   }
 
+  .MenuExtension {
+    width: 100%;
+    height: 30px;
+    background: $tertiary;
+    z-index: 10;
+  }
+
   .Filter {
     position: absolute;
     height: 100%;
@@ -22,9 +29,9 @@
 
   .SidebarContents {
     @include flex(row, space-between, center);
+    width: 100%;
     padding: $spacingL;
     height: 100%;
-    width: 100%;
     z-index: 2;
 
     ul {
@@ -44,18 +51,27 @@
   }
 }
 
+.PersonalPages {
+  margin-bottom: $spacingM;
+}
+
 .Social {
-  li a {
+  @include flex(row, flex-start, center);
+  width: 100%;
+  margin-top: $spacingL;
+  p a {
     font-size: $subtitleText;
   }
-  li {
+  p {
     padding: $spacingXS;
+    padding-right: $spacingXL;
   }
 }
 
 @media screen and (min-width: 1000px) {
   .SidebarContainer {
-    min-width: 20%;
+    min-width: 200px;
+
     min-height: 100%;
 
     .SidebarContents {
@@ -63,5 +79,9 @@
       padding-top: $spacingM;
       height: 80vh;
     }
+  }
+
+  .Personal {
+    width: 80%;
   }
 }
