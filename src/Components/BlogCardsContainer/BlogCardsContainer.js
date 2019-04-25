@@ -5,7 +5,6 @@ import uuid4 from "uuid";
 import styles from "./BlogCardsContainer.module.scss";
 //Components
 import BlogCard from "../BlogCard/BlogCard";
-import { MagicSpinner } from "react-spinners-kit";
 import Menu from "../Layout/Menu/Menu";
 //Redux
 import { connect } from "react-redux";
